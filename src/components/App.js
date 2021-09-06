@@ -1,10 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import '../styles/App.css';
+
+import { TodoContext } from '../TodoContext';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 function App() {
+	const { todoList } = React.useContext(TodoContext);
+	console.log(todoList);
 	return (
 		<div className="App">
 			{/* SEACHER */}
