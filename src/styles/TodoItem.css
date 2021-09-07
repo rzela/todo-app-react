@@ -1,0 +1,29 @@
+.todo-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.check-icon {
+	color: #0e1572;
+	transition: 0.3s;
+}
+.check-icon:hover {
+	color: #1da30b;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.check-icon-completed {
+	color: #1da30b;
+	transition: 0.3s;
+}
+.check-icon-completed:hover {
+	color: #0e1572;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.todo-completed {
+	text-decoration: line-through;
+}

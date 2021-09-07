@@ -8,15 +8,37 @@ const InternalTodoProvider = (props) => {
 		{ text: 'This is a test with completed as false', completed: false },
 		{ text: 'This is a test with completed 1 as false', completed: false },
 		{ text: 'This is a test with completed 2 as false', completed: false },
-		{ text: 'This is a test with completed 3 as false', completed: false },
 		{ text: 'This is a test completed', completed: true },
+		{ text: 'This is a test with completed 3 as false', completed: false },
+		{ text: 'This is a test with completed 4 as false', completed: false },
+		{ text: 'This is a test with completed 5 as false', completed: false },
 		{ text: 'This is a test completed 1', completed: true },
 		{ text: 'This is a test completed 2', completed: true },
+		{ text: 'This is a test completed 3', completed: true },
 	];
 
 	const [todos, setTodos] = React.useState(dummyTodoList);
 	const [filterTodoText, setFilterTodoText] = React.useState('');
 	let todoList = todos;
+
+	const completeTodo = (text) => {
+		const todoIndex = todos.findIndex((todo) => {
+			return todo.text === text;
+		});
+		todos[todoIndex].completed = !todos[todoIndex].completed;
+		console.log(todos);
+		setTodos([...todos]);
+	};
+
+	const deleteTodo = (text) => {
+		const todoIndex = todos.findIndex((todo) => {
+			return todo.text === text;
+		});
+		console.log(todoIndex);
+		const newTodos = [...todos];
+		newTodos.splice(todoIndex, 1);
+		setTodos(newTodos);
+	};
 
 	const addTodo = (text) => {
 		const todo = {
@@ -44,6 +66,8 @@ const InternalTodoProvider = (props) => {
 				todoList,
 				searchingTodos,
 				addTodo,
+				completeTodo,
+				deleteTodo,
 			}}
 		>
 			{props.children}
