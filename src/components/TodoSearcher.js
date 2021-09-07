@@ -1,7 +1,16 @@
 import React from 'react';
 import { Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { Search } from 'react-bootstrap-icons';
 
+import { TodoContext } from '../TodoContext';
 const TodoSearcher = (props) => {
+	const { searchingTodos } = React.useContext(TodoContext);
+	const onSearchTodo = (event) => {
+		const value = event.target.value;
+		console.log(value);
+		searchingTodos(value);
+	};
+
 	return (
 		<Container>
 			<Row>
@@ -10,11 +19,14 @@ const TodoSearcher = (props) => {
 				</Col>
 				<Col xs={6} md={6}>
 					<InputGroup className="mb-3">
-						<InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+						<InputGroup.Text id="todosearcher">
+							<Search />
+						</InputGroup.Text>
 						<FormControl
-							placeholder="Username"
-							aria-label="Username"
-							aria-describedby="basic-addon1"
+							placeholder="Search Todo..."
+							aria-label="todosearcher"
+							aria-describedby="todosearcher"
+							onChange={onSearchTodo}
 						/>
 					</InputGroup>
 				</Col>

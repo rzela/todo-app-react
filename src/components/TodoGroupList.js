@@ -23,7 +23,7 @@ const TodoGroupList = ({ completed }) => {
 				</p>
 			)}
 			{filteredTodoList.map((todo) => (
-				<TodoItem todo={todo}></TodoItem>
+				<TodoItem key={todo.text} todo={todo}></TodoItem>
 			))}
 		</div>
 	);
