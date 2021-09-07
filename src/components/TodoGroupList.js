@@ -19,7 +19,7 @@ const TodoGroupList = ({ completed }) => {
 
 	return (
 		<div>
-			{!isEmpty && (
+			{!isEmpty && counter && (
 				<p>
 					{completed ? 'Completed' : 'Pending'} {counter}
 				</p>

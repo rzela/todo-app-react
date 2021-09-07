@@ -7,9 +7,10 @@ import { TodoGroupList } from './TodoGroupList';
 import { TodoSearcher } from './TodoSearcher';
 import { TodoContext } from '../TodoContext';
 
-
 function App() {
 	const { todoList } = React.useContext(TodoContext);
+	const completedTodoList = todoList.filter((todo) => todo.completed);
+	const pendingTodoList = todoList.filter((todo) => !todo.completed);
 	console.log(todoList);
 	return (
 		<div className="App">
@@ -18,13 +19,12 @@ function App() {
 				<Container>
 					<Row>
 						<Col>
-							{/* TODOS GROUP PENDING */}
-							<TodoGroupList completed={false} />
-
-							{/* TODOS GROUP COMPLETED */}
-							<TodoGroupList completed={true} />
-
-							{/* CREATE BUTTON */}
+							{pendingTodoList.length > 0 && (
+								<TodoGroupList completed={false} />
+							)}
+							{completedTodoList.length > 0 && (
+								<TodoGroupList completed={true} />
+							)}
 							<Button variant="success">+</Button>
 						</Col>
 					</Row>
