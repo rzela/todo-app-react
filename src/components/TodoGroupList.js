@@ -2,6 +2,7 @@ import React from 'react';
 import { TodoContext } from '../TodoContext';
 import { TodoItem } from './TodoItem';
 
+import { Button, Badge } from 'react-bootstrap';
 import '../styles/TodoGroupList.css';
 
 const TodoGroupList = ({ completed }) => {
@@ -17,12 +18,16 @@ const TodoGroupList = ({ completed }) => {
 
 	const isEmpty = filteredTodoList.length === 0;
 
+	const message = completed ? 'Completed ' : 'Pending ';
+
+	const variant = !completed ? 'primary' : 'success';
+
 	return (
 		<div>
 			{!isEmpty && counter && (
-				<p>
-					{completed ? 'Completed' : 'Pending'} {counter}
-				</p>
+				<Button className='counter' variant={variant}>
+					{message} <Badge bg="secondary">{counter}</Badge>
+				</Button>				
 			)}
 			<div className="group-list">
 				{filteredTodoList.map((todo) => (

@@ -16,19 +16,20 @@ const TodoItem = ({ todo }) => {
 	return (
 		<>
 			<Alert key={todo.text} variant="dark" className="todo-item">
-				<span>
-					<span
+				<span className="todo-item">
+					<Button
 						onClick={() => {
 							onCompleteTodo(todo.text);
 						}}
 						className={
 							todo.completed
-								? 'check-icon-completed'
-								: 'check-icon'
+								? 'check-icon-completed icon'
+								: 'check-icon icon'
 						}
+						variant={todo.completed ? 'dark' : 'outline-dark'}
 					>
 						<LightningFill />
-					</span>
+					</Button>
 					<span className={todo.completed ? 'todo-completed' : ''}>
 						{todo.text}
 					</span>
