@@ -19,6 +19,8 @@ const InternalTodoProvider = (props) => {
 
 	const [todos, setTodos] = React.useState(dummyTodoList);
 	const [filterTodoText, setFilterTodoText] = React.useState('');
+	const [openModal, setToggleModal] = React.useState(false);
+
 	let todoList = todos;
 
 	const completeTodo = (text) => {
@@ -49,6 +51,10 @@ const InternalTodoProvider = (props) => {
 		setTodos(newTodos);
 	};
 
+	const toggleModal = () => {
+		setToggleModal(!openModal);
+	};
+
 	const searchingTodos = (text) => {
 		setFilterTodoText(text);
 	};
@@ -68,6 +74,9 @@ const InternalTodoProvider = (props) => {
 				addTodo,
 				completeTodo,
 				deleteTodo,
+				openModal,
+				toggleModal,
+				addTodo,
 			}}
 		>
 			{props.children}

@@ -1,17 +1,22 @@
 import React from 'react';
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { TodoGroupList } from './TodoGroupList';
 import { TodoSearcher } from './TodoSearcher';
+import { CreateTodoButton } from './CreateTodoButton';
+import { Modal } from './Modal';
+import { TodoForm } from './TodoForm';
+
 import { TodoContext } from '../TodoContext';
 
 function App() {
-	const { todoList } = React.useContext(TodoContext);
+	const { todoList, openModal } = React.useContext(TodoContext);
 	const completedTodoList = todoList.filter((todo) => todo.completed);
 	const pendingTodoList = todoList.filter((todo) => !todo.completed);
-	console.log(todoList);
+
+	console.log({ todoList: todoList });
 	return (
 		<div className="App">
 			<Container className="main-container">
@@ -25,11 +30,16 @@ function App() {
 							{completedTodoList.length > 0 && (
 								<TodoGroupList completed={true} />
 							)}
-							<Button variant="success">+</Button>
+							<CreateTodoButton />
 						</Col>
 					</Row>
 				</Container>
 			</Container>
+			{openModal && (
+				<Modal>
+					<TodoForm />
+				</Modal>
+			)}
 		</div>
 	);
 }
