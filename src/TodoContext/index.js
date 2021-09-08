@@ -1,9 +1,10 @@
 import React from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
 const TodoContext = React.createContext();
 
 const InternalTodoProvider = (props) => {
-	const [todos, setTodos] = React.useState([]);
+	const [todos, setTodos] = useLocalStorage('MY_TODOS', []);
 	const [filterTodoText, setFilterTodoText] = React.useState('');
 	const [openModal, setToggleModal] = React.useState(false);
 
