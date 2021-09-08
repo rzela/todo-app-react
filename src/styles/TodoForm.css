@@ -1,7 +1,7 @@
 .create-todo-dialog {
 	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
-	width: 260px;
+	width: 300px;
 	height: 150px;
 	align-items: center;
 	justify-content: center;
