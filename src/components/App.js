@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 
 import { TodoGroupList } from './TodoGroupList';
 import { TodoSearcher } from './TodoSearcher';
@@ -29,6 +29,9 @@ function App() {
 							)}
 							{completedTodoList.length > 0 && (
 								<TodoGroupList completed={true} />
+							)}
+							{!todoList.length && (
+								<Alert variant="success">No Todos created yet</Alert>
 							)}
 							<CreateTodoButton />
 						</Col>
